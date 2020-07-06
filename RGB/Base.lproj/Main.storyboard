@@ -16,14 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTq-vu-N17">
-                                <rect key="frame" x="20" y="92" width="374" height="148"/>
+                                <rect key="frame" x="20" y="92" width="374" height="230"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="148" id="yEm-Ef-agO"/>
-                                </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="46O-LQ-48Z">
-                                <rect key="frame" x="20" y="295" width="374" height="118"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="46O-LQ-48Z">
+                                <rect key="frame" x="20" y="377" width="374" height="118"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Xsi-Rd-8GH">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -145,11 +142,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="eTq-vu-N17" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="09t-uL-xy8">
+                                <variation key="heightClass=compact-widthClass=compact" constant="10"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="15"/>
+                            </constraint>
                             <constraint firstItem="eTq-vu-N17" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="51e-xX-kB8"/>
-                            <constraint firstItem="46O-LQ-48Z" firstAttribute="top" secondItem="eTq-vu-N17" secondAttribute="bottom" constant="55" id="AY5-L0-9fZ"/>
+                            <constraint firstItem="eTq-vu-N17" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="90:448" id="7Lx-qr-o74">
+                                <variation key="heightClass=compact-widthClass=compact" constant="120"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="125"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                            </constraint>
                             <constraint firstItem="46O-LQ-48Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Brd-ob-PSG"/>
-                            <constraint firstAttribute="trailing" secondItem="46O-LQ-48Z" secondAttribute="trailing" constant="20" id="LUE-KE-3bZ"/>
-                            <constraint firstItem="eTq-vu-N17" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="nsz-dW-4Of"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="46O-LQ-48Z" secondAttribute="bottom" id="FT6-lO-yso">
+                                <variation key="heightClass=compact-widthClass=compact" constant="15"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="27"/>
+                            </constraint>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="46O-LQ-48Z" secondAttribute="trailing" constant="20" id="LUE-KE-3bZ"/>
+                            <constraint firstItem="46O-LQ-48Z" firstAttribute="top" secondItem="eTq-vu-N17" secondAttribute="bottom" constant="55" id="jVd-Yy-YR6">
+                                <variation key="heightClass=compact-widthClass=compact" constant="25"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="25"/>
+                            </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eTq-vu-N17" secondAttribute="trailing" constant="20" id="ujR-1Q-QXO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
