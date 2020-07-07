@@ -50,13 +50,17 @@
                                                     <action selector="slidersChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Opr-QV-39G"/>
                                                 </connections>
                                             </slider>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.50" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQp-36-GLb">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.5" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQp-36-GLb">
                                                 <rect key="frame" x="324" y="0.0" width="50" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="688-Pt-Cpr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="TFChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="LTL-yE-iF6"/>
+                                                    <action selector="TFWasPressed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="7zX-x1-Dju"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -85,10 +89,14 @@
                                                     <action selector="slidersChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="tUT-B3-oAv"/>
                                                 </connections>
                                             </slider>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.50" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pqe-DU-v5v">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.5" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pqe-DU-v5v">
                                                 <rect key="frame" x="324" y="0.0" width="50" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                <connections>
+                                                    <action selector="TFChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="A1o-oy-ZEU"/>
+                                                    <action selector="TFWasPressed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="K2h-7b-El6"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -117,10 +125,14 @@
                                                     <action selector="slidersChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dbg-iY-2ze"/>
                                                 </connections>
                                             </slider>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.50" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-QM-vL8">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.5" borderStyle="roundedRect" placeholder="0.50" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-QM-vL8">
                                                 <rect key="frame" x="324" y="0.0" width="50" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                <connections>
+                                                    <action selector="TFChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="CLH-Ou-e80"/>
+                                                    <action selector="TFWasPressed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="DT2-fe-gpM"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -141,6 +153,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="eTq-vu-N17" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="09t-uL-xy8">
                                 <variation key="heightClass=compact-widthClass=compact" constant="10"/>
@@ -165,6 +178,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eTq-vu-N17" secondAttribute="trailing" constant="20" id="ujR-1Q-QXO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="wWj-in-eY5" appends="YES" id="Dbk-Qy-RJB"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="blueLabel" destination="LF8-F9-I2D" id="Hab-5I-1Ip"/>
@@ -180,6 +196,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="wWj-in-eY5">
+                    <connections>
+                        <action selector="hideKeyboard" destination="BYZ-38-t0r" id="Geg-G3-8Ff"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="112.5"/>
         </scene>

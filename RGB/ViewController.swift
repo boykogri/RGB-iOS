@@ -34,29 +34,75 @@ class ViewController: UIViewController {
         greenColor = CGFloat(greenSlider.value)
         blueColor = CGFloat(blueSlider.value)
         
+        let toolBar = UIToolbar()
+        let barItem = UIBarButtonItem(barButtonSystemItem: .done, target: view, action: #selector(view.endEditing))
+        toolBar.setItems([barItem], animated: false)
+        toolBar.sizeToFit()
+        
+        redTF.inputAccessoryView = toolBar
+        greenTF.inputAccessoryView = toolBar
+        blueTF.inputAccessoryView = toolBar
+        
         setBackgroundOfView()
     }
+    @IBAction func hideKeyboard() {
+        view.endEditing(true)
+    }
     @IBAction func slidersChanged(_ sender: UISlider) {
+        hideKeyboard()
+        //view.endEditing(true)
+        let roundColor = getRoundValue(Double(sender.value))
+        let color = CGFloat(roundColor)
         switch sender {
         case redSlider:
-            redColor = CGFloat(redSlider.value)
-            let roundRedColor = round(redSlider.value*100)/100
-            redLabel.text = "\(roundRedColor)"
-            redTF.text = "\(roundRedColor)"
+            redColor = color
+            redLabel.text = "\(roundColor)"
+            redTF.text = "\(roundColor)"
         case greenSlider:
-            greenColor = CGFloat(greenSlider.value)
-            let roundGreenColor = round(greenSlider.value*100)/100
-            greenLabel.text = "\(roundGreenColor)"
-            greenTF.text = "\(roundGreenColor)"
+            greenColor = color
+            greenLabel.text = "\(roundColor)"
+            greenTF.text = "\(roundColor)"
         case blueSlider:
-            blueColor = CGFloat(blueSlider.value)
-            let roundBlueColor = round(blueSlider.value*100)/100
-            blueLabel.text = "\(roundBlueColor)"
-            blueTF.text = "\(roundBlueColor)"
+            blueColor = color
+            blueLabel.text = "\(roundColor)"
+            blueTF.text = "\(roundColor)"
         default:
             return
         }
-         setBackgroundOfView()
+        setBackgroundOfView()
+    }
+    @IBAction func TFChanged(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        guard let color1 = Double(text) else { return }
+        let roundColor = getRoundValue(color1)
+        let color = CGFloat(roundColor)
+        
+        switch sender {
+        case redTF:
+            redColor = color
+            redLabel.text = "\(roundColor)"
+            redSlider.value = Float(roundColor)
+        case greenTF:
+            greenColor = color
+            greenLabel.text = "\(roundColor)"
+            greenSlider.value = Float(roundColor)
+        case blueTF:
+            blueColor = color
+            blueLabel.text = "\(roundColor)"
+            blueSlider.value = Float(roundColor)
+        default:
+            return
+        }
+        
+        setBackgroundOfView()
+    }
+    @IBAction func TFWasPressed(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        guard let color1 = Double(text) else { return }
+        sender.text = String(round(color1*100)/100)
+    }
+    private func getRoundValue(_ value: Double) -> Double{
+        return round(value*100)/100
     }
     private func setBackgroundOfView(){
         rgbView.backgroundColor = UIColor(displayP3Red: redColor, green: greenColor, blue: blueColor, alpha: 1)
@@ -64,4 +110,3 @@ class ViewController: UIViewController {
     
     
 }
-
