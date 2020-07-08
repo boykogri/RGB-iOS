@@ -58,8 +58,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
-                                                    <action selector="TFChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="LTL-yE-iF6"/>
-                                                    <action selector="TFWasPressed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="7zX-x1-Dju"/>
+                                                    <action selector="TFChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="7rP-3f-fW8"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2tB-pN-fHN"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -94,8 +94,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
-                                                    <action selector="TFChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="A1o-oy-ZEU"/>
-                                                    <action selector="TFWasPressed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="K2h-7b-El6"/>
+                                                    <action selector="TFChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="LuB-l7-E24"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="EOt-A2-Zph"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -130,8 +130,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
-                                                    <action selector="TFChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="CLH-Ou-e80"/>
-                                                    <action selector="TFWasPressed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="DT2-fe-gpM"/>
+                                                    <action selector="TFChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="AzY-D2-TXj"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Bgo-qr-w5V"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -178,9 +178,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eTq-vu-N17" secondAttribute="trailing" constant="20" id="ujR-1Q-QXO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="wWj-in-eY5" appends="YES" id="Dbk-Qy-RJB"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="blueLabel" destination="LF8-F9-I2D" id="Hab-5I-1Ip"/>
@@ -196,11 +193,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="wWj-in-eY5">
-                    <connections>
-                        <action selector="hideKeyboard" destination="BYZ-38-t0r" id="Geg-G3-8Ff"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="112.5"/>
         </scene>
