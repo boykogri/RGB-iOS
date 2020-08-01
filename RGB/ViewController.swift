@@ -24,78 +24,96 @@ class ViewController: UIViewController {
     
     @IBOutlet var rgbView: UIView!
     
-    private var redColor: CGFloat = 0
-    private var greenColor: CGFloat = 0
-    private var blueColor: CGFloat = 0
+    @IBOutlet var doneButton: UIButton!
+    
+    var redColor: CGFloat!
+    var greenColor: CGFloat!
+    var blueColor: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redColor = CGFloat(redSlider.value)
-        greenColor = CGFloat(greenSlider.value)
-        blueColor = CGFloat(blueSlider.value)
-        
+        setupInitialState()
         addToolBar()
         setBackgroundOfView()
     }
     
     @IBAction func slidersChanged(_ sender: UISlider) {
         view.endEditing(true)
-        let roundColor = getRoundValue(Double(sender.value))
-        let color = CGFloat(Double(sender.value))
+
+        let roundColor = CGFloat(sender.value).format(2)
+        let color = CGFloat(sender.value)
         switch sender {
         case redSlider:
             redColor = color
-            redLabel.text = "\(roundColor)"
-            redTF.text = "\(roundColor)"
+            redLabel.text = roundColor
+            redTF.text = roundColor
         case greenSlider:
             greenColor = color
-            greenLabel.text = "\(roundColor)"
-            greenTF.text = "\(roundColor)"
+            greenLabel.text = roundColor
+            greenTF.text = roundColor
         case blueSlider:
             blueColor = color
-            blueLabel.text = "\(roundColor)"
-            blueTF.text = "\(roundColor)"
+            blueLabel.text = roundColor
+            blueTF.text = roundColor
         default:
             return
         }
         setBackgroundOfView()
     }
     @IBAction func TFChanged(_ sender: UITextField) {
-        guard var color1 = Double(sender.text!) else { return }
-        if color1 < 0 { color1 = 0 }
-        else if color1 > 1{ color1 = 1 }
-        let roundColor = getRoundValue(color1)
-        let color = CGFloat(roundColor)
+        guard var color = Double(sender.text!) else { return }
+        if color < 0 { color = 0 }
+        else if color > 1{ color = 1 }
+        let roundColor = CGFloat(color).format(2)
         
         switch sender {
         case redTF:
-            redColor = color
-            redLabel.text = "\(roundColor)"
-            redSlider.value = Float(roundColor)
+            redColor = CGFloat(color)
+            redLabel.text = roundColor
+            redSlider.value = Float(roundColor)!
         case greenTF:
-            greenColor = color
-            greenLabel.text = "\(roundColor)"
-            greenSlider.value = Float(roundColor)
+            greenColor = CGFloat(color)
+            greenLabel.text = roundColor
+            greenSlider.value = Float(roundColor)!
         case blueTF:
-            blueColor = color
-            blueLabel.text = "\(roundColor)"
-            blueSlider.value = Float(roundColor)
+            blueColor = CGFloat(color)
+            blueLabel.text = roundColor
+            blueSlider.value = Float(roundColor)!
         default:
             return
         }
         setBackgroundOfView()
     }
     
-    private func getRoundValue(_ value: Double) -> Double{
-        return round(value*100)/100
+    private func setupInitialState(){
+        redSlider.value = Float(redColor)
+        greenSlider.value = Float(greenColor)
+        blueSlider.value = Float(blueColor)
+        
+        let redRoundColor = CGFloat(redSlider.value).format(2)
+        print("red: \(redSlider.value)")
+        print(String(format: "%.2f", redSlider.value))
+        print("redRound: \(redRoundColor)")
+        let greenRoundColor = CGFloat(greenSlider.value).format(2)
+        let blueRoundColor = CGFloat(blueSlider.value).format(2)
+        
+        redLabel.text = redRoundColor
+        greenLabel.text = greenRoundColor
+        blueLabel.text = blueRoundColor
+        
+        redTF.text = redRoundColor
+        greenTF.text = greenRoundColor
+        blueTF.text = blueRoundColor
     }
+
     private func setBackgroundOfView(){
         rgbView.backgroundColor = UIColor(displayP3Red: redColor,
                                           green: greenColor,
                                           blue: blueColor,
                                           alpha: 1)
     }
+    
     
     
 }
@@ -117,7 +135,7 @@ extension ViewController: UITextFieldDelegate{
         case blueTF:
             textField.text = blueLabel.text
         default:
-           break
+            break
         }
         
     }
@@ -134,10 +152,18 @@ extension ViewController{
         let barItem = UIBarButtonItem(barButtonSystemItem: .done,
                                       target: self,
                                       action: #selector(didTapDone))
-        let flexBarItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let flexBarItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                          target: nil,
+                                          action: nil)
         toolBar.items = [flexBarItem, barItem]
     }
     @objc private func didTapDone(){
         view.endEditing(true)
+    }
+}
+//Кол-во после запятой
+extension CGFloat{
+    func format(_ numberOfDecimal: Int) -> String{
+        return String(format: "%.\(numberOfDecimal)f", self)
     }
 }
