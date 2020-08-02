@@ -26,15 +26,12 @@ class ViewController: UIViewController {
     
     @IBOutlet var doneButton: UIButton!
     
-    var redColor: CGFloat!
-    var greenColor: CGFloat!
-    var blueColor: CGFloat!
+    var color: UIColor!
+    var delegate: SetColorDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         setupInitialState()
         addToolBar()
@@ -44,19 +41,16 @@ class ViewController: UIViewController {
     @IBAction func slidersChanged(_ sender: UISlider) {
         view.endEditing(true)
 
-        let roundColor = CGFloat(sender.value).format(2)
-        let color = CGFloat(sender.value)
+        let roundColor = string(from: sender)
+
         switch sender {
         case redSlider:
-            redColor = color
             redLabel.text = roundColor
             redTF.text = roundColor
         case greenSlider:
-            greenColor = color
             greenLabel.text = roundColor
             greenTF.text = roundColor
         case blueSlider:
-            blueColor = color
             blueLabel.text = roundColor
             blueTF.text = roundColor
         default:
@@ -68,21 +62,17 @@ class ViewController: UIViewController {
         guard var color = Double(sender.text!) else { return }
         if color < 0 { color = 0 }
         else if color > 1{ color = 1 }
-        let roundColor = CGFloat(color).format(2)
         
         switch sender {
         case redTF:
-            redColor = CGFloat(color)
-            redLabel.text = roundColor
-            redSlider.value = Float(roundColor)!
+            redSlider.value = Float(color)
+            redLabel.text = string(from: redSlider)
         case greenTF:
-            greenColor = CGFloat(color)
-            greenLabel.text = roundColor
-            greenSlider.value = Float(roundColor)!
+            greenSlider.value = Float(color)
+            greenLabel.text = string(from: greenSlider)
         case blueTF:
-            blueColor = CGFloat(color)
-            blueLabel.text = roundColor
-            blueSlider.value = Float(roundColor)!
+            blueSlider.value = Float(color)
+            blueLabel.text = string(from: blueSlider)
         default:
             return
         }
@@ -90,16 +80,20 @@ class ViewController: UIViewController {
     }
     
     private func setupInitialState(){
-        redSlider.value = Float(redColor)
-        greenSlider.value = Float(greenColor)
-        blueSlider.value = Float(blueColor)
+        //Слушатели для клавиатуры
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        let redRoundColor = CGFloat(redSlider.value).format(2)
-        print("red: \(redSlider.value)")
-        print(String(format: "%.2f", redSlider.value))
-        print("redRound: \(redRoundColor)")
-        let greenRoundColor = CGFloat(greenSlider.value).format(2)
-        let blueRoundColor = CGFloat(blueSlider.value).format(2)
+       
+        let colors = CIColor(color: color)
+
+        redSlider.value = Float(colors.red)
+        greenSlider.value = Float(colors.green)
+        blueSlider.value = Float(colors.blue)
+        
+        let redRoundColor = string(from: redSlider)
+        let greenRoundColor = string(from: greenSlider)
+        let blueRoundColor = string(from: blueSlider)
         
         redLabel.text = redRoundColor
         greenLabel.text = greenRoundColor
@@ -110,13 +104,18 @@ class ViewController: UIViewController {
         blueTF.text = blueRoundColor
     }
 
-    private func setBackgroundOfView(){
-        rgbView.backgroundColor = UIColor(displayP3Red: redColor,
-                                          green: greenColor,
-                                          blue: blueColor,
-                                          alpha: 1)
+    func setBackgroundOfView(){
+        color = UIColor(red: CGFloat(redSlider.value),
+                        green: CGFloat(greenSlider.value),
+                        blue: CGFloat(blueSlider.value),
+                        alpha: 1)
+        rgbView.backgroundColor = color
+        delegate?.setColor(color)
     }
-    
+    //Кол-во после запятой для label и TF
+    private func string(from slider: UISlider) -> String{
+        return String(format: "%.2f", slider.value)
+    }
     
     
 }
@@ -179,10 +178,4 @@ extension ViewController{
         }
     }
     
-}
-//Кол-во после запятой
-extension CGFloat{
-    func format(_ numberOfDecimal: Int) -> String{
-        return String(format: "%.\(numberOfDecimal)f", self)
-    }
 }
