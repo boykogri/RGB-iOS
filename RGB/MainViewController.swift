@@ -10,8 +10,6 @@ import UIKit
 
 class MainViewController: UIViewController {
        
-    @IBOutlet var colorView: UIView!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +25,7 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dvc = segue.destination as? ViewController{
-            dvc.color = colorView.backgroundColor
+            dvc.color = view.backgroundColor
             dvc.delegate = self
         }
     }
@@ -36,7 +34,7 @@ class MainViewController: UIViewController {
 }
 extension MainViewController: SetColorDelegate{
     func setColor(_ color: UIColor) {
-        colorView.backgroundColor = color
+        view.backgroundColor = color
     }
 
 }
