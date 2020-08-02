@@ -15,13 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Qk-GS-QSb">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Qk-GS-QSb">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7Qk-GS-QSb" firstAttribute="trailing" secondItem="zBy-Wk-Ntc" secondAttribute="trailing" id="4Z1-nh-acf"/>
+                            <constraint firstItem="7Qk-GS-QSb" firstAttribute="leading" secondItem="zBy-Wk-Ntc" secondAttribute="leading" id="FU2-fD-fkU"/>
+                            <constraint firstItem="7Qk-GS-QSb" firstAttribute="top" secondItem="zBy-Wk-Ntc" secondAttribute="top" id="W3Z-3h-ezP"/>
+                            <constraint firstAttribute="bottom" secondItem="7Qk-GS-QSb" secondAttribute="bottom" id="Zeb-NY-hxn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zBy-Wk-Ntc"/>
                     </view>
                     <navigationItem key="navigationItem" id="aDD-rZ-5Ta">
@@ -51,8 +56,8 @@
                                 <rect key="frame" x="20" y="92" width="374" height="230"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="46O-LQ-48Z">
-                                <rect key="frame" x="20" y="377" width="374" height="118"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="46O-LQ-48Z">
+                                <rect key="frame" x="20" y="377" width="374" height="193"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Xsi-Rd-8GH">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -100,7 +105,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="qey-oq-gls">
-                                        <rect key="frame" x="0.0" y="42" width="374" height="34"/>
+                                        <rect key="frame" x="0.0" y="49" width="374" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yip-Zi-9zH">
                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="34"/>
@@ -136,7 +141,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="7vv-ZA-bfK">
-                                        <rect key="frame" x="0.0" y="84" width="374" height="34"/>
+                                        <rect key="frame" x="0.0" y="98" width="374" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hp-lc-loj">
                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="34"/>
@@ -171,6 +176,14 @@
                                             <constraint firstItem="4lD-ZP-Yqj" firstAttribute="centerY" secondItem="7vv-ZA-bfK" secondAttribute="centerY" id="qfB-6Y-plZ"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cZ-Yk-poB">
+                                        <rect key="frame" x="0.0" y="147" width="374" height="46"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <segue destination="CoX-yR-gD6" kind="unwind" unwindAction="unwindSegue:" id="mFQ-ys-xNC"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="yip-Zi-9zH" firstAttribute="width" secondItem="1aB-SJ-JWy" secondAttribute="width" id="1JU-B4-wVX"/>
@@ -182,15 +195,8 @@
                                     <constraint firstItem="LF8-F9-I2D" firstAttribute="width" secondItem="afc-87-ovk" secondAttribute="width" id="vYR-wK-vJl"/>
                                     <constraint firstItem="J19-RL-BUk" firstAttribute="width" secondItem="pd1-iz-Npg" secondAttribute="width" id="wnG-36-48U"/>
                                 </constraints>
+                                <variation key="heightClass=compact-widthClass=compact" spacing="8"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cZ-Yk-poB">
-                                <rect key="frame" x="174.5" y="727" width="65" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <segue destination="CoX-yR-gD6" kind="unwind" unwindAction="unwindSegue:" id="mFQ-ys-xNC"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -208,13 +214,11 @@
                             <constraint firstItem="46O-LQ-48Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Brd-ob-PSG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="46O-LQ-48Z" secondAttribute="bottom" id="FT6-lO-yso">
                                 <variation key="heightClass=compact-widthClass=compact" constant="15"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="27"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="15"/>
                             </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="46O-LQ-48Z" secondAttribute="trailing" constant="20" id="LUE-KE-3bZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1cZ-Yk-poB" secondAttribute="bottom" constant="89" id="aPe-3f-7SY"/>
-                            <constraint firstItem="1cZ-Yk-poB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iay-Lq-F9q"/>
                             <constraint firstItem="46O-LQ-48Z" firstAttribute="top" secondItem="eTq-vu-N17" secondAttribute="bottom" constant="55" id="jVd-Yy-YR6">
-                                <variation key="heightClass=compact-widthClass=compact" constant="25"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="15"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="25"/>
                             </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eTq-vu-N17" secondAttribute="trailing" constant="20" id="ujR-1Q-QXO"/>
