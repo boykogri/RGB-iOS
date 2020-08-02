@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A60651224D6846C0043BF4B /* SetColorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60651124D6846C0043BF4B /* SetColorDelegate.swift */; };
 		3A68628724B0DA3B00131B81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68628624B0DA3B00131B81 /* AppDelegate.swift */; };
 		3A68628924B0DA3B00131B81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68628824B0DA3B00131B81 /* SceneDelegate.swift */; };
 		3A68628B24B0DA3B00131B81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A68628A24B0DA3B00131B81 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A60651124D6846C0043BF4B /* SetColorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetColorDelegate.swift; sourceTree = "<group>"; };
 		3A68628324B0DA3B00131B81 /* RGB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RGB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A68628624B0DA3B00131B81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A68628824B0DA3B00131B81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				3A68629124B0DA3D00131B81 /* LaunchScreen.storyboard */,
 				3A68629424B0DA3D00131B81 /* Info.plist */,
 				3AD3285F24D4903F00A3CC10 /* MainViewController.swift */,
+				3A60651124D6846C0043BF4B /* SetColorDelegate.swift */,
 			);
 			path = RGB;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				3A68628B24B0DA3B00131B81 /* ViewController.swift in Sources */,
 				3A68628724B0DA3B00131B81 /* AppDelegate.swift in Sources */,
+				3A60651224D6846C0043BF4B /* SetColorDelegate.swift in Sources */,
 				3A68628924B0DA3B00131B81 /* SceneDelegate.swift in Sources */,
 				3AD3286024D4903F00A3CC10 /* MainViewController.swift in Sources */,
 			);
